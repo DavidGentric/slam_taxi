@@ -15,8 +15,10 @@ public class mainTaxi {
 		static double prixAPayer=0;
 		static String unJour;
 		static boolean allerRetour;
+		static int prisEncharge;
+		static double tarifAuKm;
 		//initialisation du tablau de tarifs
-		static double [][] tableauDeTarif = {{21,2,0.86,1.72,21.93,1.29,2.58,21.93},{25,2.1,0.83,1.66,22.5,1.2,2.4,22.5},{39,2.1,0.83,1.66,22.5,1.23,2.46,25},{44,2.2,0.79,1.58,24.19,1.19,2.37,24.19},{72,2.15,0.79,1.58,22.86,1.19,2.38,22.86},{73,2.4,0.84,1.68,25.4,1.26,2.52,25.4},{74,3.15,0.92,1.84,17.3,1.38,2.76,17.3},{75,2.5,1,1.24,0,1.5,1.5,0},{85,2.3,0.8,1.6,22.2,1.2,2.4,22.2},{90,2.2,0.83,1.66,21,1.15,2.3,21}};
+		static final double [][] tableauDeTarif = {{21,2,0.86,1.72,21.93,1.29,2.58,21.93},{25,2.1,0.83,1.66,22.5,1.2,2.4,22.5},{39,2.1,0.83,1.66,22.5,1.23,2.46,25},{44,2.2,0.79,1.58,24.19,1.19,2.37,24.19},{72,2.15,0.79,1.58,22.86,1.19,2.38,22.86},{73,2.4,0.84,1.68,25.4,1.26,2.52,25.4},{74,3.15,0.92,1.84,17.3,1.38,2.76,17.3},{75,2.5,1,1.24,0,1.5,1.5,0},{85,2.3,0.8,1.6,22.2,1.2,2.4,22.2},{90,2.2,0.83,1.66,21,1.15,2.3,21}};
 
 
 
@@ -123,7 +125,7 @@ public class mainTaxi {
 				Scanner s = new Scanner(System.in);
 				String res = s.next();
 
-				boolean allerRetour = res.matches("oui")?true:false;			
+				allerRetour = res.matches("oui")?true:false;			
 				
 				
 			} catch (Exception e) {
@@ -142,8 +144,8 @@ public class mainTaxi {
 		}
 		
 		public static void calcul(){
-			int prisEncharge;
-			double tarifAuKm;
+			/*int prisEncharge;
+			  double tarifAuKm;*/
 			System.out.println("\n"+"Calcules en cours d'exécution...");
 			switch (unJour) {
 			//lundi
@@ -253,13 +255,14 @@ public class mainTaxi {
 			double variableLocalpriseEnCharge=0;
 			double variableLocalTarifKm=0;
 			double variableLocaltarifHoraire=0;
-
+			double temp1=0;
+			
 			tableauDeTarif [unDepartement][1]=variableLocalpriseEnCharge;
 			tableauDeTarif [unDepartement][3]=variableLocalTarifKm;
 			tableauDeTarif [unDepartement][4]=variableLocaltarifHoraire;
-
+			temp1=variableLocalpriseEnCharge+uneDistance*variableLocalTarifKm;
 			//'variableLocalpriseEnCharge'+'uneDistance'*'variableLocalTarifKm'='prixAPayer';
-			System.out.println(variableLocalpriseEnCharge+uneDistance*variableLocalTarifKm);
+			System.out.println(temp1);
 
 		}
 		public static void semaineAR(){
